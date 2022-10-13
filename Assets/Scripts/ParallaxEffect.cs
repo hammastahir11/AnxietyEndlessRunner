@@ -6,7 +6,8 @@ public class ParallaxEffect : MonoBehaviour
 {
     private Transform CameraTransform;
     private Vector3 lastCameraTransform;
-    [SerializeField] float parallaxEffectMultiplier = 0.05f;
+    [SerializeField] private Vector2 parallaxEffectMultiplier;
+    private float textureSizeX;
 
 
 
@@ -14,14 +15,26 @@ public class ParallaxEffect : MonoBehaviour
     {
         CameraTransform = Camera.main.transform;
         lastCameraTransform = CameraTransform.position;
+        Sprite sprite = GetComponent<SpriteRenderer>().sprite;
+        Texture2D texture = sprite.texture;
+        textureSizeX = texture.width / sprite.pixelsPerUnit;
     }
 
     private void LateUpdate()
     {
         Vector3 deltaMovement = CameraTransform.position - lastCameraTransform ;
 
-        transform.position += deltaMovement * parallaxEffectMultiplier *-1;
+        transform.position += new Vector3(deltaMovement.x*parallaxEffectMultiplier.x,deltaMovement.y*parallaxEffectMultiplier.y);
         lastCameraTransform = CameraTransform.position;
+
+
+        if (Mathf.Abs(CameraTransform.position.x - transform.position.x) >= textureSizeX)
+        {
+            float offsetPositionX = (CameraTransform.position.x - transform.position.x) % textureSizeX;
+            transform.position = new Vector3(CameraTransform.position.x+offsetPositionX, transform.position.y);
+        }
+
+
     }
 
 
