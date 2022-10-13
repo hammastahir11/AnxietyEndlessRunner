@@ -9,6 +9,8 @@ public class repeatebackground : MonoBehaviour
         //Destroy(collision.gameObject);
         if (collision.gameObject.tag.Equals("Player"))
         {
+
+            //Hammas Kuta zaleel ... zaleela nalu zaleel
             collision.gameObject.transform.position =  new Vector3(-9.23f, -3.86f, 0);
 
         }
