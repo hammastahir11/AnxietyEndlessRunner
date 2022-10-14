@@ -19,8 +19,7 @@ public class repeatebackground : MonoBehaviour
 
     private void Update()
     {
-        float minutes = DateTime.Now.TimeOfDay.Minutes-time.Minutes;
-        //Debug.Log(DateTime.Now.TimeOfDay.Minutes+"      "+time.Minutes);
+
         if (DateTime.Now.TimeOfDay.Minutes==time.Minutes+1)
         {
             ChangeMap();
@@ -29,7 +28,7 @@ public class repeatebackground : MonoBehaviour
 
     public void ChangeMap()
     {   time = DateTime.Now.TimeOfDay;
-        Debug.Log("ON : " + (mapnumber + 1) % 4 + "  OFF : "+mapnumber % 4);
+       
         maps[(mapnumber+1) % 4].SetActive(true);
         maps[mapnumber % 4].SetActive(false);
         mapnumber++;
