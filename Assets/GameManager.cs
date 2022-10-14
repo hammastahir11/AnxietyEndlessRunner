@@ -10,9 +10,4 @@ public class GameManager : MonoBehaviour
         Debug.Log("Anxiety game 1");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
