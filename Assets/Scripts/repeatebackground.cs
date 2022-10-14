@@ -5,29 +5,34 @@ using UnityEngine;
 
 public class repeatebackground : MonoBehaviour
 {
+    [SerializeField] float timer = 1f;
+    TimeSpan time;
 
-    [SerializeField] GameObject map;
-    //[SerializeField] GameObject mapGenKey;
-    Transform obj;
-    private void OnTriggerExit2D(Collider2D collision)
+    [SerializeField] List<GameObject> maps;
+    int mapnumber = 0;
+
+    private void Start()
     {
-        //Destroy(collision.gameObject);
-        if (collision.gameObject.tag.Equals("Player"))
+        time = DateTime.Now.TimeOfDay;
+        
+    }
+
+    private void Update()
+    {
+        float minutes = DateTime.Now.TimeOfDay.Minutes-time.Minutes;
+        //Debug.Log(DateTime.Now.TimeOfDay.Minutes+"      "+time.Minutes);
+        if (DateTime.Now.TimeOfDay.Minutes==time.Minutes+1)
         {
-            Vector3 newPosition = new Vector3(19.1599998f, 0, 0) + map.transform.position;
-            obj = map.transform;
-            obj.position = newPosition;
-            Debug.Log(newPosition);
-            Instantiate(gameObject,obj);
-
-            Vector3 TempVec= new Vector3(gameObject.transform.position.x, 0, 0);
-            gameObject.transform.position += TempVec ;
-
-
-
-            //Destroy(collision.gameObject);
-            //collision.gameObject.transform.position =  new Vector3(-9.23f, -3.86f, 0);
-
+            ChangeMap();
         }
+    }
+
+    public void ChangeMap()
+    {   time = DateTime.Now.TimeOfDay;
+        Debug.Log("ON : " + (mapnumber + 1) % 4 + "  OFF : "+mapnumber % 4);
+        maps[(mapnumber+1) % 4].SetActive(true);
+        maps[mapnumber % 4].SetActive(false);
+        mapnumber++;
+        
     }
 }
