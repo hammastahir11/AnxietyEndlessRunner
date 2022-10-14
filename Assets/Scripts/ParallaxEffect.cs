@@ -18,6 +18,8 @@ public class ParallaxEffect : MonoBehaviour
         Sprite sprite = GetComponent<SpriteRenderer>().sprite;
         Texture2D texture = sprite.texture;
         textureSizeX = texture.width / sprite.pixelsPerUnit;
+
+        Debug.Log("TextureSizeXunit" + textureSizeX+ gameObject.name);
     }
 
     private void LateUpdate()
@@ -31,10 +33,9 @@ public class ParallaxEffect : MonoBehaviour
         if (Mathf.Abs(CameraTransform.position.x - transform.position.x) >= textureSizeX)
         {
             float offsetPositionX = (CameraTransform.position.x - transform.position.x) % textureSizeX;
-            transform.position = new Vector3(CameraTransform.position.x+offsetPositionX, transform.position.y);
+            Debug.Log("offsetPosition" + offsetPositionX + gameObject.name);
+            transform.position = new Vector3(CameraTransform.position.x, transform.position.y);
         }
-
-
     }
 
 
