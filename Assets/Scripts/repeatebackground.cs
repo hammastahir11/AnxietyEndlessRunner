@@ -5,12 +5,15 @@ using UnityEngine;
 
 public class repeatebackground : MonoBehaviour
 {
-    [SerializeField] float timer = 1f;
-    TimeSpan time;
-
+    [SerializeField] int timer = 1;
     [SerializeField] List<GameObject> maps;
+    TimeSpan time;
     int mapnumber = 0;
+   
 
+
+
+    [SerializeField]Animator transition;
     private void Start()
     {
         time = DateTime.Now.TimeOfDay;
@@ -19,19 +22,36 @@ public class repeatebackground : MonoBehaviour
 
     private void Update()
     {
-
-        if (DateTime.Now.TimeOfDay.Minutes==time.Minutes+1)
+     
+        
+        if ((DateTime.Now.TimeOfDay.Minutes)>(time.Minutes+timer))
         {
             ChangeMap();
         }
     }
 
     public void ChangeMap()
-    {   time = DateTime.Now.TimeOfDay;
-       
+    {  
+        time = DateTime.Now.TimeOfDay;
+            StartCoroutine(myfun());
+        
+    }
+
+
+
+    IEnumerator myfun()
+    {
+        
+
+        transition.SetTrigger("FadeIn");
+        yield return new WaitForSeconds(0.4f);
         maps[(mapnumber+1) % 4].SetActive(true);
         maps[mapnumber % 4].SetActive(false);
         mapnumber++;
+        transition.SetTrigger("FadeOut");
         
+       
     }
+
+
 }
