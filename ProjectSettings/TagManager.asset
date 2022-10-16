@@ -68,3 +68,6 @@ TagManager:
   - name: Transition
     uniqueID: 3755159241
     locked: 0
+  - name: Shooting
+    uniqueID: 1779686345
+    locked: 0

@@ -20,6 +20,7 @@ public float movePower = 10f;
         // Start is called before the first frame update
         void Start()
         {
+            isShooting=false;
             rb = GetComponent<Rigidbody2D>();
             anim = GetComponent<Animator>();
         }
@@ -128,12 +129,38 @@ public float movePower = 10f;
 
             isJumping = false;
         }
+
+
+        public float shootSpeed, shootTimer;
+        private bool isShooting;
+        public Transform shootPosition;
+        public GameObject Bullet;
+
         void Attack()
         {
-            if (Input.GetKeyDown(KeyCode.Alpha1))
+            if (Input.GetKeyDown(KeyCode.Alpha1) && !isShooting)
             {
                 anim.SetTrigger("attack");
+                StartCoroutine(Shoot());
             }
+            IEnumerator Shoot(){
+                int direction(){
+                    if(transform.localScale.x < 0f){
+                        return -1;
+                    }
+                    else{
+                        return +1;
+                    }
+                }
+                isShooting=true;
+                GameObject newBullet= Instantiate(Bullet, shootPosition.position, Quaternion.identity);
+                newBullet.GetComponent<Rigidbody2D>().velocity=new Vector2(shootSpeed*direction()*Time.fixedDeltaTime,0f);
+                newBullet.transform.localScale=new Vector2(newBullet.transform.localScale.x * direction(), newBullet.transform.localScale.y);
+                
+                yield return new WaitForSeconds(shootTimer);
+                isShooting= false;
+            }
+                
         }
         void Hurt()
         {
