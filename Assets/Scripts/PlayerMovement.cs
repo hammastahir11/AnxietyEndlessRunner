@@ -27,17 +27,19 @@ public float movePower = 10f;
 
         private void Update()
         {
-            Restart();
-            if (alive)
-            {
-                Hurt();
-                Die();
-                Attack();
-                Jump();
-                KickBoard();
-                Run();
 
-            }
+             autoRun();
+            // Restart();
+            // if (alive)
+            // {
+            //     Hurt();
+            //     Die();
+            //     Attack();
+            //     Jump();
+            //     KickBoard();
+            //     Run();
+
+            // }
         }
         private void OnTriggerEnter2D(Collider2D other)
         {
@@ -57,6 +59,40 @@ public float movePower = 10f;
             }
 
         }
+
+
+        
+
+        void autoRun()
+        {
+            if (!isKickboard)
+            {
+                Vector3 moveVelocity = Vector3.zero;
+                anim.SetBool("isRun", false);
+
+
+            
+                if (true)
+                {
+                    direction = 0.51586f;
+                    moveVelocity = Vector3.right;
+
+                    transform.localScale = new Vector3(direction, 0.51586f, 0.51586f);
+                    if (!anim.GetBool("isJump"))
+                        anim.SetBool("isRun", true);
+
+                }
+                transform.position += moveVelocity * movePower * Time.deltaTime;
+
+            }
+           
+        }
+
+        
+
+
+
+
 
         void Run()
         {
@@ -167,10 +203,10 @@ public float movePower = 10f;
             if (Input.GetKeyDown(KeyCode.Alpha2))
             {
                 anim.SetTrigger("hurt");
-                if (direction == 1)
-                    rb.AddForce(new Vector2(-5f, 1f), ForceMode2D.Impulse);
-                else
-                    rb.AddForce(new Vector2(5f, 1f), ForceMode2D.Impulse);
+                // if (direction == 1)
+                //     rb.AddForce(new Vector2(-5f, 1f), ForceMode2D.Impulse);
+                // else
+                //     rb.AddForce(new Vector2(5f, 1f), ForceMode2D.Impulse);
             }
         }
         void Die()
