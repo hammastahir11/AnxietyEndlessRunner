@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6866664920703973437}
   - component: {fileID: 6866664920703973434}
   - component: {fileID: 4375844650500276378}
+  - component: {fileID: -6668256472392141845}
   m_Layer: 15
   m_Name: Anxiety
   m_TagString: enemy
@@ -26,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6866664920703973436}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 928.8452, y: -1.7368317, z: -4.074419}
+  m_LocalPosition: {x: 54.43705, y: 0.26315308, z: -4.074419}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -101,3 +102,16 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.3399999
+--- !u!114 &-6668256472392141845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6866664920703973436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dec760f4d4eb29246be64f6304f63055, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 2

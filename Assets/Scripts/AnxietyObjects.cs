@@ -18,6 +18,12 @@ public class AnxietyObjects : MonoBehaviour
 
     }
 
+    public Transform getPlayerTransfrom()
+    {
+        Transform tr = PlayerTransform;
+        return tr;
+    }
+
     private void Update()
     {
         //Debug.Log(((DateTime.Now.TimeOfDay.Seconds % 60) % timer));
@@ -33,7 +39,7 @@ public class AnxietyObjects : MonoBehaviour
         System.Random rnd = new System.Random();
         int chooseAnxietyObjectFromList = rnd.Next(0,anxietyObjects.Count);
         
-        anxietyObjects[chooseAnxietyObjectFromList].transform.position = new Vector3(PlayerTransform.position.x+13.8061f, PlayerTransform.position.y+2f, PlayerTransform.position.z);
+        anxietyObjects[chooseAnxietyObjectFromList].transform.position = new Vector3(PlayerTransform.position.x+13.8061f, PlayerTransform.position.y+4f, PlayerTransform.position.z);
 
         Instantiate(anxietyObjects[chooseAnxietyObjectFromList]);
     }
