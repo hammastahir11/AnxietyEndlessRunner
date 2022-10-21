@@ -11,17 +11,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Anxiety Variant 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6521370702826057554, guid: 378d2e27dbe843f4a84a60f92c9c456c, type: 3}
+      propertyPath: m_TagString
+      value: enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 6521370702826057555, guid: 378d2e27dbe843f4a84a60f92c9c456c, type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6521370702826057555, guid: 378d2e27dbe843f4a84a60f92c9c456c, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.7
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 6521370702826057555, guid: 378d2e27dbe843f4a84a60f92c9c456c, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.7
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 6521370702826057555, guid: 378d2e27dbe843f4a84a60f92c9c456c, type: 3}
       propertyPath: m_LocalScale.z
@@ -29,11 +33,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6521370702826057555, guid: 378d2e27dbe843f4a84a60f92c9c456c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 180.739
+      value: 68.771645
       objectReference: {fileID: 0}
     - target: {fileID: 6521370702826057555, guid: 378d2e27dbe843f4a84a60f92c9c456c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.7368317
+      value: 0.20996857
       objectReference: {fileID: 0}
     - target: {fileID: 6521370702826057555, guid: 378d2e27dbe843f4a84a60f92c9c456c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -70,8 +74,6 @@ PrefabInstance:
     - target: {fileID: 6521370702826057556, guid: 378d2e27dbe843f4a84a60f92c9c456c, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: ac6df25a646322c44b7245d0668e3902, type: 3}
-    m_RemovedComponents:
-    - {fileID: -6689384169829243854, guid: 378d2e27dbe843f4a84a60f92c9c456c, type: 3}
-    - {fileID: 0}
+      objectReference: {fileID: 21300000, guid: 102832233d4dc174bb33c3b48959f3a8, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 378d2e27dbe843f4a84a60f92c9c456c, type: 3}

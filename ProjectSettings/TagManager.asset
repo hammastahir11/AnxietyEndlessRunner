@@ -21,8 +21,8 @@ TagManager:
   - sky
   - Players
   - Transition
-  - 
-  - 
+  - enemy
+  - Destroy
   - 
   - 
   - 
@@ -71,4 +71,10 @@ TagManager:
     locked: 0
   - name: Shooting
     uniqueID: 1779686345
+    locked: 0
+  - name: enemy
+    uniqueID: 3413152991
+    locked: 0
+  - name: Destroy
+    uniqueID: 2999454587
     locked: 0
