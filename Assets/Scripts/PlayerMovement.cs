@@ -43,7 +43,8 @@ public float movePower = 10f;
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        anim.SetBool("isJump", false);
+        if(gameObject.GetComponent<PlayerMovement>().isActiveAndEnabled==true)
+            anim.SetBool("isJump", false);
     }
     void KickBoard()
         {
@@ -103,21 +104,21 @@ public float movePower = 10f;
 
 
                 if (Input.GetAxisRaw("Horizontal") < 0)
-                {
-                    direction = -0.51586f;
+            {//0.51586f
+                direction = -0.7f;
                     moveVelocity = Vector3.left;
 
-                    transform.localScale = new Vector3(direction, 0.51586f, 0.51586f);
+                    transform.localScale = new Vector3(direction, 0.7f, 0.7f);
                     if (!anim.GetBool("isJump"))
                         anim.SetBool("isRun", true);
 
                 }
                 if (Input.GetAxisRaw("Horizontal") > 0 || true)
                 {
-                    direction = 0.51586f;
+                    direction = 0.7f;
                     moveVelocity = Vector3.right;
 
-                    transform.localScale = new Vector3(direction, 0.51586f, 0.51586f);
+                    transform.localScale = new Vector3(direction, 0.7f, 0.7f);
                     if (!anim.GetBool("isJump"))
                         anim.SetBool("isRun", true);
 
@@ -130,39 +131,67 @@ public float movePower = 10f;
                 Vector3 moveVelocity = Vector3.zero;
                 if (Input.GetAxisRaw("Horizontal") < 0)
                 {
-                    direction = -0.51586f;
+                    direction = -0.7f;
                     moveVelocity = Vector3.left;
 
-                    transform.localScale = new Vector3(direction, 0.51586f, 0.51586f);
+                    transform.localScale = new Vector3(direction, 0.7f, 0.7f);
                 }
                 if (Input.GetAxisRaw("Horizontal") > 0)
                 {
-                    direction = 0.51586f;
+                    direction =0.7f;
                     moveVelocity = Vector3.right;
 
-                    transform.localScale = new Vector3(direction, 0.51586f, 0.51586f);
+                    transform.localScale = new Vector3(direction, 0.7f, 0.7f);
                 }
                 transform.position += moveVelocity * KickBoardMovePower * Time.deltaTime;
             }
         }
-        void Jump()
+
+
+
+ 
+    public void Jump(bool jump=false)
         {
+
+            //FOR WEB
             if ((Input.GetButtonDown("Jump") || Input.GetAxisRaw("Vertical") > 0)
             && !anim.GetBool("isJump"))
             {
-                isJumping = true;
+
+            if (gameObject.transform.position.y > -2.826012)
+            {
+               
+                return;
+            }
+            isJumping = true;
                 anim.SetBool("isJump", true);
             }
-            if (!isJumping)
+
+            //FOR MOBILE
+            if ((jump)
+                && !anim.GetBool("isJump"))
+            {
+            
+
+            if (gameObject.transform.position.y > -2.826012)
             {
                 return;
             }
+                isJumping = true;
+                anim.SetBool("isJump", true);
+            
+
+            }
+                if (!isJumping)
+                    {
+                        return;
+                    }
 
             rb.velocity = Vector2.zero;
-
+      
             Vector2 jumpVelocity = new Vector2(0, jumpPower);
             rb.AddForce(jumpVelocity, ForceMode2D.Impulse);
-
+        
             isJumping = false;
         }
 
@@ -172,14 +201,20 @@ public float movePower = 10f;
         public Transform shootPosition;
         public GameObject Bullet;
 
-        void Attack()
+        public void Attack(bool fire=false)
         {
             if (Input.GetKeyDown(KeyCode.Alpha1) && !isShooting)
             {
                 anim.SetTrigger("attack");
                 StartCoroutine(Shoot());
             }
-            IEnumerator Shoot(){
+
+            else if (fire && !isShooting)
+            {
+                anim.SetTrigger("attack");
+                StartCoroutine(Shoot());
+            }
+        IEnumerator Shoot(){
                 int direction(){
                     if(transform.localScale.x < 0f){
                         return -1;
