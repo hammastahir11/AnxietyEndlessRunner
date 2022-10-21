@@ -7,33 +7,49 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -6668256472392141845, guid: e0d9bb1a0ee7bd847acaed6644af88c6, type: 3}
+      propertyPath: moveSpeed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6866664920703973434, guid: e0d9bb1a0ee7bd847acaed6644af88c6, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 8e03d3f8c061fdb448b7d1a39145fa32, type: 3}
+      objectReference: {fileID: 21300000, guid: f7bc198542df18f41887827c70bbc9c5, type: 3}
     - target: {fileID: 6866664920703973434, guid: e0d9bb1a0ee7bd847acaed6644af88c6, type: 3}
       propertyPath: m_SortingLayer
-      value: 8
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 6866664920703973434, guid: e0d9bb1a0ee7bd847acaed6644af88c6, type: 3}
       propertyPath: m_SortingLayerID
-      value: 887579577
+      value: -881814305
       objectReference: {fileID: 0}
     - target: {fileID: 6866664920703973436, guid: e0d9bb1a0ee7bd847acaed6644af88c6, type: 3}
       propertyPath: m_Name
       value: Anxiety Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 6866664920703973436, guid: e0d9bb1a0ee7bd847acaed6644af88c6, type: 3}
+      propertyPath: m_TagString
+      value: enemy
       objectReference: {fileID: 0}
     - target: {fileID: 6866664920703973437, guid: e0d9bb1a0ee7bd847acaed6644af88c6, type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6866664920703973437, guid: e0d9bb1a0ee7bd847acaed6644af88c6, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6866664920703973437, guid: e0d9bb1a0ee7bd847acaed6644af88c6, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6866664920703973437, guid: e0d9bb1a0ee7bd847acaed6644af88c6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 200.76064
+      value: 140.97194
       objectReference: {fileID: 0}
     - target: {fileID: 6866664920703973437, guid: e0d9bb1a0ee7bd847acaed6644af88c6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.7368317
+      value: 0.20996857
       objectReference: {fileID: 0}
     - target: {fileID: 6866664920703973437, guid: e0d9bb1a0ee7bd847acaed6644af88c6, type: 3}
       propertyPath: m_LocalPosition.z

@@ -1,10 +1,12 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+namespace ClearSky
 {
-public float movePower = 10f;
+    public class DemoCollegeStudentController : MonoBehaviour
+    {
+        public float movePower = 10f;
         public float KickBoardMovePower = 15f;
         public float jumpPower = 20f; //Set Gravity Scale in Rigidbody2D Component to 5
 
@@ -20,32 +22,29 @@ public float movePower = 10f;
         // Start is called before the first frame update
         void Start()
         {
-            isShooting=false;
             rb = GetComponent<Rigidbody2D>();
             anim = GetComponent<Animator>();
         }
 
         private void Update()
         {
+            Restart();
+            if (alive)
+            {
+                Hurt();
+                Die();
+                Attack();
+                Jump();
+                KickBoard();
+                Run();
 
-        // autoRun();
-        Restart();
-        if (alive)
-        {
-           //Hurt();
-           // Die();
-            Attack();
-            Jump();
-           // KickBoard();
-            Run();
-
+            }
         }
-    }
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        anim.SetBool("isJump", false);
-    }
-    void KickBoard()
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            anim.SetBool("isJump", false);
+        }
+        void KickBoard()
         {
             if (Input.GetKeyDown(KeyCode.Alpha4) && isKickboard)
             {
@@ -59,40 +58,6 @@ public float movePower = 10f;
             }
 
         }
-
-
-        
-
-        //void autoRun()
-        //{
-        //    if (!isKickboard)
-        //    {
-        //        Vector3 moveVelocity = Vector3.zero;
-        //        anim.SetBool("isRun", false);
-
-
-            
-        //        if (true)
-        //        {
-        //            direction = 0.51586f;
-        //            moveVelocity = Vector3.right;
-
-        //            transform.localScale = new Vector3(direction, 0.51586f, 0.51586f);
-        //            if (!anim.GetBool("isJump"))
-        //                anim.SetBool("isRun", true);
-
-        //        }
-        //        transform.position += moveVelocity * movePower * Time.deltaTime;
-
-        //    }
-           
-        //}
-
-        
-
-
-
-
 
         void Run()
         {
@@ -165,48 +130,22 @@ public float movePower = 10f;
 
             isJumping = false;
         }
-
-
-        public float shootSpeed, shootTimer;
-        private bool isShooting;
-        public Transform shootPosition;
-        public GameObject Bullet;
-
         void Attack()
         {
-            if (Input.GetKeyDown(KeyCode.Alpha1) && !isShooting)
+            if (Input.GetKeyDown(KeyCode.Alpha1))
             {
                 anim.SetTrigger("attack");
-                StartCoroutine(Shoot());
             }
-            IEnumerator Shoot(){
-                int direction(){
-                    if(transform.localScale.x < 0f){
-                        return -1;
-                    }
-                    else{
-                        return +1;
-                    }
-                }
-                isShooting=true;
-                GameObject newBullet= Instantiate(Bullet, shootPosition.position, Quaternion.identity);
-                newBullet.GetComponent<Rigidbody2D>().velocity=new Vector2(shootSpeed*direction()*Time.fixedDeltaTime,0f);
-                newBullet.transform.localScale=new Vector2(newBullet.transform.localScale.x * direction(), newBullet.transform.localScale.y);
-                
-                yield return new WaitForSeconds(shootTimer);
-                isShooting= false;
-            }
-                
         }
-        public void Hurt()
+        void Hurt()
         {
-            if (true)
+            if (Input.GetKeyDown(KeyCode.Alpha2))
             {
                 anim.SetTrigger("hurt");
-                // if (direction == 1)
-                //     rb.AddForce(new Vector2(-5f, 1f), ForceMode2D.Impulse);
-                // else
-                //     rb.AddForce(new Vector2(5f, 1f), ForceMode2D.Impulse);
+                if (direction == 1)
+                    rb.AddForce(new Vector2(-5f, 1f), ForceMode2D.Impulse);
+                else
+                    rb.AddForce(new Vector2(5f, 1f), ForceMode2D.Impulse);
             }
         }
         void Die()
@@ -229,4 +168,6 @@ public float movePower = 10f;
                 alive = true;
             }
         }
+    }
+
 }

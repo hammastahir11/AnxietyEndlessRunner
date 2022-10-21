@@ -33,7 +33,7 @@ public class ParallaxEffect : MonoBehaviour
         {
             float offsetPositionX = (CameraTransform.position.x - transform.position.x) % textureSizeX;
            
-            transform.position = new Vector3(CameraTransform.position.x+offsetPositionX, transform.position.y);
+            transform.position = new Vector3(CameraTransform.position.x, transform.position.y);
         }
     }
 
