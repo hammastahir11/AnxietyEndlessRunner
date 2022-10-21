@@ -77,7 +77,7 @@ namespace ClearSky
                         anim.SetBool("isRun", true);
 
                 }
-                if (Input.GetAxisRaw("Horizontal") > 0)
+                if (Input.GetAxisRaw("Horizontal") > 0 || true)
                 {
                     direction = 0.51586f;
                     moveVelocity = Vector3.right;

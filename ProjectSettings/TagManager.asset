@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - enemy
   layers:
   - Default
   - TransparentFX
@@ -20,8 +21,8 @@ TagManager:
   - sky
   - Players
   - Transition
-  - 
-  - 
+  - enemy
+  - Destroy
   - 
   - 
   - 
@@ -62,9 +63,15 @@ TagManager:
   - name: Decore
     uniqueID: 1340999871
     locked: 0
+  - name: enemy
+    uniqueID: 422508911
+    locked: 0
   - name: Players
     uniqueID: 887579577
     locked: 0
   - name: Transition
     uniqueID: 3755159241
+    locked: 0
+  - name: Destroy
+    uniqueID: 350183647
     locked: 0
