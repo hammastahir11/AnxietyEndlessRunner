@@ -12,15 +12,16 @@ public class AnxietyObjects : MonoBehaviour
     [SerializeField] Transform SkeltonTransform;
     [SerializeField] int timer = 4;
 
+    float yAxixSpawn;
 
 
-   
+
     TimeSpan time;
   
     private void Start()
     {
         time = DateTime.Now.TimeOfDay;
-
+        yAxixSpawn = PlayerTransform.position.y;
     }
 
     public Transform getSkeltonTransform()
@@ -46,7 +47,7 @@ public class AnxietyObjects : MonoBehaviour
         int chooseAnxietyObjectFromList = rnd.Next(0,anxietyObjects.Count);
 
         int location = rnd.Next(0, 7);
-        anxietyObjects[chooseAnxietyObjectFromList].transform.position = new Vector3(PlayerTransform.position.x+13.8061f, PlayerTransform.position.y+location, PlayerTransform.position.z);
+        anxietyObjects[chooseAnxietyObjectFromList].transform.position = new Vector3(PlayerTransform.position.x+13.8061f, yAxixSpawn + location, PlayerTransform.position.z);
 
         Instantiate(anxietyObjects[chooseAnxietyObjectFromList]);
     }
