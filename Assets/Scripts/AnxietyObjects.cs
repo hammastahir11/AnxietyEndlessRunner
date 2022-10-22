@@ -20,7 +20,6 @@ public class AnxietyObjects : MonoBehaviour
   
     private void Start()
     {
-        time = DateTime.Now.TimeOfDay;
         time = DateTime.UtcNow;
         yAxixSpawn = PlayerTransform.position.y;
     }
