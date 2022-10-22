@@ -10,17 +10,18 @@ public class AnxietyObjects : MonoBehaviour
     [SerializeField] Transform PlayerTransform;
 
     [SerializeField] Transform SkeltonTransform;
-    [SerializeField] int timer = 4;
+    float timer = 1000f;
 
     float yAxixSpawn;
+    float currentflag=9;
 
 
-
-    TimeSpan time;
+    DateTime time;
   
     private void Start()
     {
         time = DateTime.Now.TimeOfDay;
+        time = DateTime.UtcNow;
         yAxixSpawn = PlayerTransform.position.y;
     }
 
@@ -34,15 +35,29 @@ public class AnxietyObjects : MonoBehaviour
 
     private void Update()
     {
-      
-        if (((DateTime.Now.TimeOfDay.Seconds%60)%timer)==0 && time.Seconds!=DateTime.Now.TimeOfDay.Seconds)
+        //Here by increasing or decreaseing the value of timer we can handle the spawning of the enemy in game.
+        if (ComplexityFlags.flag_count > currentflag)
+        {
+            timer -= 100f;
+            currentflag = ComplexityFlags.flag_count;
+        }
+        if (ComplexityFlags.flag_count < currentflag)
+        {
+            timer += 100f;
+            currentflag = ComplexityFlags.flag_count;
+        }
+
+
+
+       //Spawning the enemy after specfic time interval
+        if ((DateTime.UtcNow-time).TotalMilliseconds>timer)
         {
             SpawnAxietyObjects();
         }
     }
     public void SpawnAxietyObjects()
     {
-        time = DateTime.Now.TimeOfDay;
+        time = DateTime.UtcNow;
         System.Random rnd = new System.Random();
         int chooseAnxietyObjectFromList = rnd.Next(0,anxietyObjects.Count);
 

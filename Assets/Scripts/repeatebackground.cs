@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+//Here is a simple timer to change the map of the game during playing mood
 public class repeatebackground : MonoBehaviour
 {
     [SerializeField] int timer = 1;

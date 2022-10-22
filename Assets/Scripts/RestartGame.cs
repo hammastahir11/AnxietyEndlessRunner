@@ -3,8 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+//In this script Game restart and exit functionality is working properly
 public class RestartGame : MonoBehaviour
 {
+
+
+
     public void RestartThisGame()
     {
 
