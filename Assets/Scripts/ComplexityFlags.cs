@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+// Here the redar diagram of the game is handled using flags on the radar
 public class ComplexityFlags : MonoBehaviour
 {
     [SerializeField] GameObject[] flags;
-    int flag_count=9;
+    public static int flag_count=9;
 
     public void RemoveFlag()
     {
