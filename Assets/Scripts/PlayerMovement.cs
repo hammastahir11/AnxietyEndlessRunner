@@ -4,7 +4,20 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-public float movePower = 10f;
+    public static PlayerMovement Instance;
+    private void Awake()
+    {
+        Instance = this;
+    }
+
+    //Sound
+    [Header("Sound")]
+
+    [SerializeField] public AudioClip SafeguardBubble_S;
+
+
+
+    public float movePower = 10f;
         public float KickBoardMovePower = 15f;
         public float jumpPower = 20f; //Set Gravity Scale in Rigidbody2D Component to 5
 
@@ -116,7 +129,7 @@ public float movePower = 10f;
                 if (Input.GetAxisRaw("Horizontal") > 0 || true)
                 {
                     direction = 0.7f;
-                    moveVelocity = Vector3.right;
+                moveVelocity = new Vector3(0,0,0);//Vector3.right;
 
                     transform.localScale = new Vector3(direction, 0.7f, 0.7f);
                     if (!anim.GetBool("isJump"))

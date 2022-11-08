@@ -5,16 +5,27 @@ using UnityEngine;
 public class BulletDie : MonoBehaviour
 {
 
+    [Header("Particle Effects")]
+  
+    [SerializeField] ParticleSystem particleEffect;
+
+    [Header("Image for Die")]
     public float dieTime;
 
 
     [SerializeField] Sprite speaker;
     [SerializeField] Sprite sensation;
     [SerializeField] Sprite ccamear;
+    
+
+    AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
+       
         StartCoroutine(Timer());
+        audioSource = GetComponent<AudioSource>();
+
     }
 
     // Update is called once per frame
@@ -30,22 +41,34 @@ public class BulletDie : MonoBehaviour
             SpriteRenderer enemy = other.gameObject.GetComponent<SpriteRenderer>();
             if (enemy.sprite.name.Equals("camera"))
             {
+                HitParticel(other.gameObject);
                 enemy.sprite = ccamear;
                 Destroy(gameObject);
             }
             else if (enemy.sprite.name.Equals("people"))
             {
+                HitParticel(other.gameObject);
                 enemy.sprite = sensation;
                 Destroy(gameObject);
             }
             else if (enemy.sprite.name.Equals("speaker"))
             {
                 enemy.sprite = speaker;
+
+                HitParticel(other.gameObject);
                 Destroy(gameObject);
             }
+            audioSource.PlayOneShot(PlayerMovement.Instance.SafeguardBubble_S) ;
+
         }
     }
 
+
+    public void HitParticel(GameObject position)
+    {
+        ParticleSystem Instace = Instantiate(particleEffect, position.transform.position, Quaternion.identity);
+        Destroy(Instace.gameObject, Instace.main.duration + Instace.main.startLifetime.constantMax);
+    }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
